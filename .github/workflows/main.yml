@@ -15,4 +15,5 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: docker run --rm -v "${PWD}:/src" semgrep/semgrep:latest semgrep scan --config="auto" --text --output=semgrep.txt --json-output=semgrep.json --sarif-output=semgrep.sarif
       - run: echo "🍏 This job's status is ${{ job.status }}."
